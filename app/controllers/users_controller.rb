@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   def new
     @user = User.new
   end
@@ -20,14 +19,13 @@ class UsersController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to new_user_path, notice: 'User was successfully updated.' }
-      else
-        redirect_to new_user_path
-      end
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      redirect_to new_user_path
+    else
+      @user.errors.full_messages
+      render :edit
     end
-    redirect_to new_user_path
   end
 
   private
