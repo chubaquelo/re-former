@@ -1,15 +1,25 @@
 <h1>Hello from new.html.erb</h1>
 
-<form accept-charset="UTF-8" action="/users" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <label for="username"> Input your username </label><br>
-  <input type="text" id="username" name="username">
+<%# <form accept-charset="UTF-8" action="/users" method="post"> %>
+  <%# <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>
+  <%# <label for="username"> Input your username </label><br>
+  <input type="text" id="username" name="user[username]">
   <br><br>
   <label for="email"> Input your e-mail </label><br>
-  <input type="email" id="email" name="email">
+  <input type="email" id="email" name="user[email]">
   <br><br>
   <label for="password"> Input your Password </label><br>
-  <input type="password" id="password" name="password">
+  <input type="password" id="password" name="user[password]">
   <br><br>
-  <input type="submit" value="submit">
-</form>
+  <input type="submit" value="submit"> %>
+<%# </form> %>
+
+<%= form_tag("/users", method: "post") do %>
+  <%= label_tag(:username, 'Input your username:') %><br>
+  <%= text_field_tag(:username) %><br><br>
+  <%= label_tag(:email, 'Enter your email:') %><br>
+  <%= email_field_tag(:email) %><br><br>
+  <%= label_tag(:password, 'Enter your password:') %><br>
+  <%= password_field_tag(:password) %><br><br>
+  <%= submit_tag('Submit') %>
+<% end %>
