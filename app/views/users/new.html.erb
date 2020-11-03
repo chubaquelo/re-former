@@ -14,12 +14,19 @@
   <input type="submit" value="submit"> %>
 <%# </form> %>
 
-<%= form_tag("/users", method: "post") do %>
-  <%= label_tag(:username, 'Input your username:') %><br>
-  <%= text_field_tag(:username) %><br><br>
-  <%= label_tag(:email, 'Enter your email:') %><br>
-  <%= email_field_tag(:email) %><br><br>
-  <%= label_tag(:password, 'Enter your password:') %><br>
-  <%= password_field_tag(:password) %><br><br>
-  <%= submit_tag('Submit') %>
+<%# <%= form_tag("/users", method: "post") do %>
+  <%# <%= label_tag(:username, 'Input your username:') %><!-- <br> -->
+  <%# <%= text_field_tag(:username) %><!-- <br><br> -->
+  <%# <%= label_tag(:email, 'Enter your email:') %><!-- <br> -->
+  <%# <%= email_field_tag(:email) %><!-- <br><br> -->
+  <%# <%= label_tag(:password, 'Enter your password:') %><!-- <br> -->
+  <%# <%= password_field_tag(:password) %><!-- <br><br> -->
+  <%# <%= submit_tag('Submit') %>
+<%# <% end %>
+
+<%= form_for :user, url: users_path do |f| %>
+  Username:  <%= f.text_field :username, placeholder: 'Desired username' %><br><br>
+  E-mail: <%= f.email_field :email, placeholder: 'email@company.com' %><br><br>
+  Password: <%= f.password_field :password %><br><br>
+  <%= f.submit %>
 <% end %>

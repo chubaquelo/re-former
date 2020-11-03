@@ -1,0 +1,6 @@
+<%= form_for :user, :method => :put, url: users_path(@user) do |f| %>
+  Username:  <%= f.text_field :username, placeholder: 'Desired username' %><br><br>
+  E-mail: <%= f.email_field :email, placeholder: 'email@company.com' %><br><br>
+  Password: <%= f.password_field :password %><br><br>
+  <%= f.submit %>
+<% end %>
