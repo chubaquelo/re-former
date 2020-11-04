@@ -29,7 +29,7 @@
     <% end %>
   </ul>
 <% end %>
-<%= form_for @user, url: user_path(@user) do |f| %>
+<%= form_for @user do |f| %>
   Username:  <%= f.text_field :username, placeholder: 'Desired username' %><br><br>
   E-mail: <%= f.email_field :email, placeholder: 'email@company.com' %><br><br>
   Password: <%= f.password_field :password %><br><br>
