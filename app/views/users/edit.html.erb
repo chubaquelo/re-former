@@ -1,0 +1,37 @@
+<%# <form accept-charset="UTF-8" action="users_path" method="post"> %>
+  <%# <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>
+  <%# <label for="username"> Input your username </label><br>
+  <input type="text" id="username" name="user[username]">
+  <br><br>
+  <label for="email"> Input your e-mail </label><br>
+  <input type="email" id="email" name="user[email]">
+  <br><br>
+  <label for="password"> Input your Password </label><br>
+  <input type="password" id="password" name="user[password]">
+  <br><br>
+  <input type="submit" value="submit"> %>
+<%# </form> %>
+
+<%# <%= form_tag("users_path", method: "post") do %>
+  <%# <%= label_tag(:username, 'Input your username:') %><!-- <br> -->
+  <%# <%= text_field_tag(:username) %><!-- <br><br> -->
+  <%# <%= label_tag(:email, 'Enter your email:') %><!-- <br> -->
+  <%# <%= email_field_tag(:email) %><!-- <br><br> -->
+  <%# <%= label_tag(:password, 'Enter your password:') %><!-- <br> -->
+  <%# <%= password_field_tag(:password) %><!-- <br><br> -->
+  <%# <%= submit_tag('Submit') %>
+<%# <% end %>
+
+<% if @user.errors.any? %>
+  <ul>
+    <% @user.errors.each do |e| %>
+      <li>Your <%= e %> is invalid. Please try something else</li>
+    <% end %>
+  </ul>
+<% end %>
+<%= form_for @user do |f| %>
+  Username:  <%= f.text_field :username, placeholder: 'Desired username' %><br><br>
+  E-mail: <%= f.email_field :email, placeholder: 'email@company.com' %><br><br>
+  Password: <%= f.password_field :password %><br><br>
+  <%= f.submit %>
+<% end %>
